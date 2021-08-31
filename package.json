@@ -6,6 +6,9 @@
   "author": "LianXin",
   "license": "MIT",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.3.1"
+    "@openzeppelin/contracts": "^4.3.1",
+    "@truffle/hdwallet-provider": "1.2.3",
+    "dotenv": "^10.0.0",
+    "truffle-plugin-verify": "^0.5.9"
   }
 }
