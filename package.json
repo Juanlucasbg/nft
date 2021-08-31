@@ -1,0 +1,11 @@
+{
+  "name": "nft",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Juanlucasbg/nft.git",
+  "author": "LianXin",
+  "license": "MIT",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.1"
+  }
+}
