@@ -152,7 +152,10 @@ contract TheNFT is ERC721, Ownable {
     address to,
     uint256 tokenId
   ) internal virtual override {
-    require(offers[tokenId].isForSale == false, 'TheNFT: offer_exist_for_token');
+    // remove any offer
+    Offer storage offer = offers[tokenId];
+    offer.isForSale = false;
+    offer.minValue = 0;
 
     super._transfer(from, to, tokenId);
   }
