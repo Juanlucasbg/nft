@@ -82,7 +82,7 @@ contract TheNFT is ERC721, Ownable {
     emit OfferWithdrawed(tokenId);
   }
 
-  function makeBid(uint256 tokenId, uint256 price) external payable{
+  function makeBid(uint256 tokenId) external payable{
     require(!_exists(tokenId), "TheNFT: not_exist_token");
 
     Bid storage oldBid = bids[tokenId];
@@ -134,6 +134,27 @@ contract TheNFT is ERC721, Ownable {
     if (bid.bidder != address(0) && bid.value > 0) {
       payable(bid.bidder).transfer(bid.value);
     }
+  }
+
+  /**
+    * @dev Transfers `tokenId` from `from` to `to`.
+    *  As opposed to {transferFrom}, this imposes no restrictions on msg.sender.
+    *
+    * Requirements:
+    *
+    * - `to` cannot be the zero address.
+    * - `tokenId` token must be owned by `from`.
+    *
+    * Emits a {Transfer} event.
+    */
+  function _transfer(
+    address from,
+    address to,
+    uint256 tokenId
+  ) internal virtual override {
+    require(offers[tokenId].isForSale == false, 'TheNFT: offer_exist_for_token');
+
+    super._transfer(from, to, tokenId);
   }
 
   /**
